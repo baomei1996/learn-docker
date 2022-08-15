@@ -1,0 +1,26 @@
+sudo: required
+
+language: generic
+
+services: 
+  - docker
+
+before_install:
+  - echo "Start creating an image with dockerfile"
+  - docker build -t bomian/docker-react-app -f Dockerfile.dev .
+
+script: 
+  - docker run -e CI=true bomian/docker-react-app npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-west-2"
+  app: "docker-react-app"
+  env: "Dockerreactapp-env"
+  bucket_name: "elasticbeanstalk-us-west-2-413452389678"
+  bucket_path: "docker-react-app"
+  on: 
+    branch: master
+
+  access_key_id: $AWS_ACCESS_KEY
+  screct_access_key: $AWS_SECRET_ACCESS_KEY

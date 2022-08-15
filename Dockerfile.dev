@@ -1,5 +1,4 @@
-# base Image
-FROM node:10
+FROM node:alpine
 
 WORKDIR /usr/src/app
 
@@ -9,4 +8,4 @@ RUN npm install
 
 COPY ./ ./
 
-CMD ["node", "server.js"]
+CMD ["npm", "run", "start"]
