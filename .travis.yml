@@ -22,5 +22,5 @@ deploy:
   on: 
     branch: feature/docker-react-app
 
-access_key_id: $AWS_ACCESS_KEY
-srect_access_key: $AWS_SECRET_ACCESS_KEY
+  access_key_id: $AWS_ACCESS_KEY
+  srect_access_key: $AWS_SECRET_ACCESS_KEY
